@@ -8,12 +8,14 @@ from enum import Enum
 from typing import TypeVar, Mapping
 from math import pi
 
+
 class WeirdPeelException(BaseException):
     pass
 
+
 class Vegetable(object):
-    def __init__(self, length: int, diameter: int, skin:list, has_seeds:bool, is_hollow:bool, has_stem:bool,
-                 has_base:bool):
+    def __init__(self, length: int, diameter: int, skin: list, has_seeds: bool, is_hollow: bool, has_stem: bool,
+                 has_base: bool):
         self.length = length
         self.diameter = diameter
         self.skin = skin
@@ -40,7 +42,6 @@ class Vegetable(object):
     def mince(self):
         pass
 
-    @abstractmethod
     def peel(self):
         if "smooth" and "thin" not in self.skin:
             self.skin = None
@@ -64,6 +65,9 @@ class BellPepper(Vegetable):
         super(BellPepper, self).__init__(length=length, diameter=diameter, skin=["smooth", "thin"], has_seeds=True,
                                          is_hollow=True, has_stem=True, has_base=True)
 
+    def cut(self, part):
+        pass
+
     def chop(self):
         """Cut top, remove seeds, cut base, cut into wedges 1 cm wide, cut those into pieces 1cm x 1cm"""
         self.has_stem = False # Cut top
@@ -74,6 +78,12 @@ class BellPepper(Vegetable):
         # for i in range(circumference.__round__()
 
         # cut those into pieces 1cm x 1cm
+
+    def dice(self):
+        pass
+
+    def mince(self):
+        pass
 
 
 class Carrot(Vegetable):
@@ -90,7 +100,20 @@ class Carrot(Vegetable):
     """
     def __init__(self, length, diameter): # 14, 3
         super(Carrot, self).__init__(length=length, diameter=diameter, skin=["rough", "thin"], has_seeds=False,
-                                         is_hollow=False, has_stem=True, has_base=True)
+                                     is_hollow=False, has_stem=True, has_base=True)
+
+    def cut(self, part):
+        pass
+
+    def chop(self):
+        pass
+
+    def dice(self):
+        pass
+
+    def mince(self):
+        pass
+
 
 class Onion(Vegetable):
     """
@@ -109,6 +132,19 @@ class Onion(Vegetable):
     def __init__(self, length, diameter):  # 7, 7
         super(Onion, self).__init__(length=length, diameter=diameter, skin=["smooth", "thick"], has_seeds=False,
                                      is_hollow=False, has_stem=True, has_base=True)
+
+    def cut(self, part):
+        pass
+
+    def chop(self):
+        pass
+
+    def dice(self):
+        pass
+
+    def mince(self):
+        pass
+
 
 class Graveyard():
     pass
